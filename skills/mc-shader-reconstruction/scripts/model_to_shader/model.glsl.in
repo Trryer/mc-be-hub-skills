@@ -1,0 +1,59 @@
+// Model-space distance/material sampler. Requires TEXTURE_3 and TEXTURE_4.
+const vec3 MS_GRID=@GRID@;
+const vec3 MS_ORIGIN=@ORIGIN@;
+const float MS_PITCH=@PITCH@;
+const vec2 MS_ATLAS=@ATLAS@;
+const vec2 MS_TILE=@TILE@;
+const float MS_COLUMNS=@COLUMNS@;
+const float MS_RANGE=@RANGE@;
+vec2 msAtlas(vec3 cell){
+    cell=clamp(cell,vec3(0),MS_GRID-1.0);
+    return (vec2(mod(cell.z,MS_COLUMNS),floor(cell.z/MS_COLUMNS))*MS_TILE+cell.xy+vec2(1.5))/MS_ATLAS;
+}
+vec4 msSample(sampler2D image,vec3 p){
+    vec3 cell=clamp((p-MS_ORIGIN)/MS_PITCH,vec3(0),MS_GRID-1.0);
+    float z=floor(cell.z);
+    return mix(texture2D(image,msAtlas(vec3(cell.xy,z)),-16.0),
+               texture2D(image,msAtlas(vec3(cell.xy,min(z+1.0,MS_GRID.z-1.0))),-16.0),cell.z-z);
+}
+float msDistance(vec3 p){
+    return (dot(msSample(TEXTURE_3,p).rg,vec2(65280,255))/65535.0*2.0-1.0)*MS_RANGE;
+}
+vec3 msNormalCell(vec3 cell){
+    vec2 oct=texture2D(TEXTURE_3,msAtlas(cell),-16.0).ba*2.0-1.0;
+    vec3 n=vec3(oct,1.0-abs(oct.x)-abs(oct.y));
+    if(n.z<0.0)n.xy=(1.0-abs(n.yx))*mix(vec2(-1),vec2(1),step(vec2(0),n.xy));
+    return normalize(n);
+}
+vec3 msNormal(vec3 p){
+    vec3 cell=clamp((p-MS_ORIGIN)/MS_PITCH,vec3(0),MS_GRID-1.0),a=floor(cell),f=fract(cell);
+    vec3 n0=mix(mix(msNormalCell(a),msNormalCell(a+vec3(1,0,0)),f.x),
+                mix(msNormalCell(a+vec3(0,1,0)),msNormalCell(a+vec3(1,1,0)),f.x),f.y);
+    vec3 n1=mix(mix(msNormalCell(a+vec3(0,0,1)),msNormalCell(a+vec3(1,0,1)),f.x),
+                mix(msNormalCell(a+vec3(0,1,1)),msNormalCell(a+vec3(1,1,1)),f.x),f.y);
+    return normalize(mix(n0,n1,f.z));
+}
+vec3 msSpin(vec3 p,vec2 cs){return vec3(cs.x*p.x+cs.y*p.z,p.y,-cs.y*p.x+cs.x*p.z);}
+bool msTrace(vec3 ro,vec3 rd,float maximum,out float travel){
+    vec3 safe=vec3(abs(rd.x)<1e-7?(rd.x<0.0?-1e-7:1e-7):rd.x,
+                   abs(rd.y)<1e-7?(rd.y<0.0?-1e-7:1e-7):rd.y,
+                   abs(rd.z)<1e-7?(rd.z<0.0?-1e-7:1e-7):rd.z);
+    vec3 first=(MS_ORIGIN-ro)/safe,last=(MS_ORIGIN+(MS_GRID-1.0)*MS_PITCH-ro)/safe;
+    vec3 lo=min(first,last),hi=max(first,last);
+    travel=max(max(max(lo.x,lo.y),lo.z),0.0);
+    float end=min(min(min(hi.x,hi.y),hi.z),maximum);
+    if(travel>end)return false;
+    for(int i=0;i<@STEPS@;++i){
+        float d=msDistance(ro+rd*travel);
+        if(abs(d)<MS_PITCH*.22)return true;
+        travel+=max(abs(d)*.75,MS_PITCH*.12);
+        if(travel>end)return false;
+    }
+    return false;
+}
+vec3 msShade(vec3 albedo,vec3 normal,vec3 direction){
+    vec3 light=normalize(vec3(.5,.8,.7));
+    float diffuse=max(dot(normal,light),0.0);
+    float specular=pow(max(dot(normal,normalize(light-direction)),0.0),32.0);
+    return albedo*(.32+.88*diffuse)+vec3(.07)*specular;
+}

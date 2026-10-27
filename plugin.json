@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "mc-be-hub-skills",
+  "version": "0.3.1",
+  "description": "Minecraft Bedrock 开发技能套件：日常开发、查询和经验，独立索引维护，以及 Blockbench、模型 Shader 和离屏工具。",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/mc-bedrock-knowledge-setup/SKILL.md",
+      "interface": {
+        "displayName": "mc-be-hub-skills",
+        "shortDescription": "一次安装五个 Minecraft Bedrock 开发与资产技能"
+      }
+    }
+  }
+}

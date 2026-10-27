@@ -1,0 +1,4 @@
+interface:
+  display_name: "MC Shader 离屏渲染"
+  short_description: "用桌面 OpenGL 预览和比较 MC 全屏 shader"
+  default_prompt: "Use $mc-shader-offscreen-rendering to render repeatable keyframes and compare the performance of this Minecraft-style fullscreen shader."

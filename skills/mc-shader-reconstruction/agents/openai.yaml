@@ -1,0 +1,4 @@
+interface:
+  display_name: "Minecraft 模型转 Shader"
+  short_description: "模型转 MC shader，内置距离场烘焙与自动对照 CLI"
+  default_prompt: "使用 $mc-shader-reconstruction，根据这个模型制作 Minecraft shader；遵循指定精度，未指定时以性能优先。"

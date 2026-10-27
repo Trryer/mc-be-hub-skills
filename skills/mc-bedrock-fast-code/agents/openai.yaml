@@ -1,0 +1,4 @@
+interface:
+  display_name: "MC Bedrock 开发、查询与经验"
+  short_description: "网易 ModSDK 日常开发、官方知识查询、项目检查与外部私有经验记录管理"
+  default_prompt: "使用 $mc-bedrock-fast-code 完成当前 ModSDK 项目开发，按需查询已有知识库和外部私有经验记录。"

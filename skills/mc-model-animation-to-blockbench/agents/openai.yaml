@@ -1,0 +1,4 @@
+interface:
+  display_name: "Model to Blockbench"
+  short_description: "Convert 3D models and animations to Blockbench"
+  default_prompt: "Use $mc-model-animation-to-blockbench to convert this model and its animations into an editable Blockbench project."

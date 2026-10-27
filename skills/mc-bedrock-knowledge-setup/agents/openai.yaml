@@ -1,0 +1,4 @@
+interface:
+  display_name: "MC Bedrock 知识库初始化与索引维护"
+  short_description: "首次安装准备知识库，按指定来源更新、修复或补建必需索引"
+  default_prompt: "使用 $mc-bedrock-knowledge-setup 检查并准备本次指定来源的知识索引，复用已有数据。"
