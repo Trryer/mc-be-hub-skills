@@ -2,13 +2,13 @@
 
 一个安装包，五个 Minecraft Bedrock / 网易 MCStudio ModSDK 技能入口。日常开发、查询、检查与经验查阅集中在 `mc-bedrock-fast-code`，首次索引准备和资产工具按任务分开加载。
 
-当前版本：**0.3.2**。
+当前版本：**0.3.3**。
 
 | 技能 | 用途 |
 | --- | --- |
 | [mc-bedrock-fast-code](skills/mc-bedrock-fast-code/SKILL.md) | 日常开发、官方查询、项目检查、经验记录与搜索 |
 | [mc-bedrock-knowledge-setup](skills/mc-bedrock-knowledge-setup/SKILL.md) | 首次准备、明确更新或缺失索引恢复 |
-| [mc-model-animation-to-blockbench](skills/mc-model-animation-to-blockbench/SKILL.md) | 模型、贴图与骨骼动画转 Blockbench；体素 48/80/112/144 四档，默认 80，支持自定义 |
+| [mc-model-animation-to-blockbench](skills/mc-model-animation-to-blockbench/SKILL.md) | 模型、贴图与骨骼动画转 Blockbench，含复杂动作对照验收；体素 48/80/112/144 四档，默认 80，支持自定义 |
 | [mc-shader-reconstruction](skills/mc-shader-reconstruction/SKILL.md) | 模型转 Shader、距离场/材质烘焙、刚体动画轨道编码、GLSL 与自动对照 |
 | [mc-shader-offscreen-rendering](skills/mc-shader-offscreen-rendering/SKILL.md) | 桌面离屏关键帧、动画预览和 GPU 计时对比 |
 

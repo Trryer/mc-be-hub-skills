@@ -64,6 +64,8 @@ The converter does not write arbitrary vertex skin weights. Faces are rigidly as
 
 Inspect `report.json` and open the generated `.bbmodel` in Blockbench. Select and play every clip; verify texture placement, pivots, bone movement, duration, and loop/hold behavior. If Bedrock exports were requested, verify the `.geo.json` and `.animation.json` together.
 
+For multi-turn or multi-bone motion, use [complex animation validation](animation-validation.md) in addition to the first/middle/last checkpoints. The converter's bundled checkpoints cover only those three times per clip; they do not establish correctness throughout a complex action.
+
 The bundled `smoke_test.py` creates its own GLB test fixture and exercises GLB, external glTF, OBJ+MTL, voxel and mesh paths, and damaged-input reporting. Run it with a new temporary output folder:
 
 ```powershell

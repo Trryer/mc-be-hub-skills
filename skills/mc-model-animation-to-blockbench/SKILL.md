@@ -9,4 +9,6 @@ Use the bundled local converter in `scripts/asset_to_bbmodel/` to create native 
 
 Read [the conversion workflow](references/conversion.md) for input checks, dependencies, useful presets, animation limitations, and Blockbench validation. The complete converter source, requirements, repeatable regression test, and optional desktop codec validator ship in this skill.
 
+For multi-turn rotation, several moving bones, or combined rotation and translation, also read [complex animation validation](references/animation-validation.md). It explains full-timeline source comparisons, bind-space checks, playback semantics, and validation across voxel resolutions.
+
 Voxel presets are **48 / 80 / 112 / 144**; an unspecified resolution defaults to **80**. Explicit user-defined resolutions take priority, subject to reported resource budgets. User-owned workflows and evidence stay in external private storage and are not part of the public package.
