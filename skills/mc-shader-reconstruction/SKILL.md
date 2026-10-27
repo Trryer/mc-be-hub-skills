@@ -13,6 +13,7 @@ description: "将 GLB/glTF、FBX、OBJ 或 Bedrock geo.json 模型重建为 Mine
 - **复杂网格需要原动作，且部件是单骨骼或节点刚体驱动**：按[分部件距离场与刚体动画](references/rigid-part-animation.md)烘焙绑定几何与独立轨道；内置 CLI 可编码已求值的动作矩阵，导入、拆件与游戏接入仍需适配。静态距离场不会自动生成完整动画。
 - **设备预算很紧或需要少量程序几何**：按[解析 SDF 方法](references/reconstruction.md)适配；源数据导入和坐标归一化可复用 CLI 中间结果。
 - **Bedrock geo.json**：读取 bone/cube/pivot 与动画，走解析 SDF 路线；当前 CLI 不直接读取此格式。
+- **Cuboid bbmodel 或自定义图集适配器**：按[导入与图集校验](references/import-and-atlas-checks.md)核对格式旋转顺序、父链和部署采样常量；bbmodel 先经独立原生参考验证，再进入重建，当前转换 CLI 不直接读取此格式。
 - 用户目标为普通网格显示时，使用项目已有几何渲染路线。
 
 采样距离场的低档也不保证比解析 SDF 更省性能。依据目标设备和实测成本选择路线；不承诺一键无损转换。

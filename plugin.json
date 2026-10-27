@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "mc-be-hub-skills",
-  "version": "0.3.3",
+  "version": "0.3.4",
   "description": "Minecraft Bedrock 开发技能套件：日常开发、查询和经验，独立索引维护，以及 Blockbench、模型 Shader 和离屏工具。",
   "extensions": {
     "com.openai": {
