@@ -89,6 +89,8 @@ CLI 负责模型资源，不自动部署包或生成游戏命令。接入时沿�
 
 ## 可重复验证工具
 
+完整刚体动作可继续进入[分部件动画流程](rigid-part-animation.md)。`rigid_animation.py` 复用已求值的矩阵数据输出动画纹理和 GLSL；它不会改变本静态转换 CLI 的动画范围。
+
 `make_regression_assets.py` 在 Blender 中现场生成多网格、UV 接缝、多材质、父变换、负/非均匀尺度和骨骼动画夹具。`run_regression.py` 调用公开 CLI，验证跨格式输出与错误分支；夹具不是按模型手写 shader 的案例。
 
 ```powershell

@@ -1,6 +1,6 @@
 ---
 name: mc-shader-reconstruction
-description: "将 GLB/glTF、FBX、OBJ 或 Bedrock geo.json 模型重建为 Minecraft ModSDK shader；内置静态网格/动画定格的距离场烘焙、材质映射、GLSL 生成与对照验收 CLI，另支持解析 SDF 与动画的人工适配。"
+description: "将 GLB/glTF、FBX、OBJ 或 Bedrock geo.json 模型重建为 Minecraft ModSDK shader；内置静态/定格距离场转换、材质映射、刚体动画轨道编码和对照验收工具，复杂动画按部件与源数据适配。"
 ---
 
 # Minecraft 模型转 Shader
@@ -10,7 +10,8 @@ description: "将 GLB/glTF、FBX、OBJ 或 Bedrock geo.json 模型重建为 Mine
 ## 选择工作路线
 
 - **静态 GLB/glTF、FBX、OBJ，或动画的指定姿态**：优先运行内置[通用转换 CLI](references/automated-pipeline.md)。它统一坐标、烘焙距离/法线/原 UV 材质、生成模型空间 GLSL 与全屏适配器，并用原三角网格自动对照；无需逐模型重写烘焙器。先使用 `--inspect-only` 核对导入信息，再转换。
-- **设备预算很紧、需要少量程序几何，或需要真正播放骨骼/部件动画**：按[解析 SDF 方法](references/reconstruction.md)适配；源数据导入和坐标归一化可复用 CLI 中间结果。完整动画播放不会由静态距离场自动生成。
+- **复杂网格需要原动作，且部件是单骨骼或节点刚体驱动**：按[分部件距离场与刚体动画](references/rigid-part-animation.md)烘焙绑定几何与独立轨道；内置 CLI 可编码已求值的动作矩阵，导入、拆件与游戏接入仍需适配。静态距离场不会自动生成完整动画。
+- **设备预算很紧或需要少量程序几何**：按[解析 SDF 方法](references/reconstruction.md)适配；源数据导入和坐标归一化可复用 CLI 中间结果。
 - **Bedrock geo.json**：读取 bone/cube/pivot 与动画，走解析 SDF 路线；当前 CLI 不直接读取此格式。
 - 用户目标为普通网格显示时，使用项目已有几何渲染路线。
 

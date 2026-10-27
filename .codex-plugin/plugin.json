@@ -1,6 +1,6 @@
 {
   "name": "mc-be-hub-skills",
-  "version": "0.3.1",
+  "version": "0.3.2",
   "description": "Minecraft Bedrock 开发与资产工具技能套件",
   "skills": "./skills/",
   "interface": {

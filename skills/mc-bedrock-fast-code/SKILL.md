@@ -20,7 +20,7 @@ description: "网易 Minecraft Bedrock/MCStudio ModSDK 日常开发：修改项�
 | --- | --- |
 | 首次准备知识库、明确更新/修复索引、必需索引缺失 | [mc-bedrock-knowledge-setup](../mc-bedrock-knowledge-setup/SKILL.md) |
 | 通用模型与动画转 Blockbench | [mc-model-animation-to-blockbench](../mc-model-animation-to-blockbench/SKILL.md) |
-| 模型转 Shader、通用烘焙与对照验收 | [mc-shader-reconstruction](../mc-shader-reconstruction/SKILL.md) |
+| 模型转 Shader、距离场与刚体动画轨道、对照验收 | [mc-shader-reconstruction](../mc-shader-reconstruction/SKILL.md) |
 | Shader 关键帧、旋转/动画预览与桌面 GPU 对比 | [mc-shader-offscreen-rendering](../mc-shader-offscreen-rendering/SKILL.md) |
 
 普通查询无结果时先核对术语、来源和查询条件；无结果本身不表示需要重建索引。只有必需来源的索引确实缺失，才转到索引技能补建该项。开发不依赖缺失来源时继续工作并说明限制。

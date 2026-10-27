@@ -155,6 +155,8 @@ def cli_smoke(temp):
             help_count += 1
     run(ROOT/'skills/mc-shader-reconstruction/scripts/model_to_shader/convert.py','--help')
     help_count += 1
+    run(ROOT/'skills/mc-shader-reconstruction/scripts/model_to_shader/rigid_animation.py','--help')
+    help_count += 1
     pack = temp/'generated-pack'
     run(dev/'fast_code.py','create-pack','--namespace','bundle_test','--out',pack,'--with-ui')
     for command, key in [('add-item','sample_item'),('add-block','sample_block'),('add-entity','sample_entity'),('add-animation','walk')]:

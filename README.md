@@ -2,14 +2,14 @@
 
 一个安装包，五个 Minecraft Bedrock / 网易 MCStudio ModSDK 技能入口。日常开发、查询、检查与经验查阅集中在 `mc-bedrock-fast-code`，首次索引准备和资产工具按任务分开加载。
 
-当前版本：**0.3.1**。公开分发只包含通用功能；具体经验记录和历史备份独立保存在私有存储。
+当前版本：**0.3.2**。
 
 | 技能 | 用途 |
 | --- | --- |
-| [mc-bedrock-fast-code](skills/mc-bedrock-fast-code/SKILL.md) | 日常开发、官方查询、项目检查、外部私有经验记录管理 |
+| [mc-bedrock-fast-code](skills/mc-bedrock-fast-code/SKILL.md) | 日常开发、官方查询、项目检查、经验记录与搜索 |
 | [mc-bedrock-knowledge-setup](skills/mc-bedrock-knowledge-setup/SKILL.md) | 首次准备、明确更新或缺失索引恢复 |
 | [mc-model-animation-to-blockbench](skills/mc-model-animation-to-blockbench/SKILL.md) | 模型、贴图与骨骼动画转 Blockbench；体素 48/80/112/144 四档，默认 80，支持自定义 |
-| [mc-shader-reconstruction](skills/mc-shader-reconstruction/SKILL.md) | 模型转 Shader、距离场/材质烘焙、GLSL 生成与自动对照 |
+| [mc-shader-reconstruction](skills/mc-shader-reconstruction/SKILL.md) | 模型转 Shader、距离场/材质烘焙、刚体动画轨道编码、GLSL 与自动对照 |
 | [mc-shader-offscreen-rendering](skills/mc-shader-offscreen-rendering/SKILL.md) | 桌面离屏关键帧、动画预览和 GPU 计时对比 |
 
 ## 一次安装全部技能
@@ -57,11 +57,11 @@ codex plugin add mc-be-hub-skills@mc-be-hub-skills
 
 Blender、Open3D、ModernGL 等依赖只在对应转换或渲染任务需要时安装，按各技能的依赖清单与工作流执行。标准转换 CLI 可复用，但体素是近似重构，Blockbench 无顶点蒙皮，复杂动画仍需适配。精度和验收要求优先遵从用户；未指定时沿用各技能默认值。桌面离屏效果和计时不能替代游戏实测。
 
-## 私有经验记录
+## 经验记录与搜索
 
-公开包仅提供记录、搜索与积累能力，具体记录位于技能目录外。云端同步使用独立 private 仓库及其 `experience/` 文件夹；公开仓库的文件夹不能单独设置私密权限。技能更新不会覆盖外部记录，使用方式见[私有记录流程](skills/mc-bedrock-fast-code/references/experience-index.md)。
+支持按关键词查询已有记录、添加已确认的修复与验收结果，并配置记录目录。记录与技能安装目录分离，更新技能时继续沿用；命令和记录格式见[经验管理流程](skills/mc-bedrock-fast-code/references/experience-index.md)。
 
-公开包由 `python -B scripts/package_bundle.py` 生成，拒绝混入具体经验目录。
+使用 `python -B scripts/package_bundle.py` 构建技能安装包。
 
 ## 校验与许可
 
